@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground")) onGroundState = true;
     }
+    
     // FixedUpdate is called 50 times a second
     void  FixedUpdate()
     {
@@ -62,6 +63,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown("space") && onGroundState){
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with goomba!");
         }
     }
 }
