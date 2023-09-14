@@ -10,7 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private float enemyPatroltime = 2.0f;
     private int moveRight = -1;
     private Vector2 velocity;
-
+    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    
     private Rigidbody2D enemyBody;
 
     void Start()
