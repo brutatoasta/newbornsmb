@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float upSpeed = 10;
     private bool onGroundState = true;
     private Rigidbody2D marioBody;
+    private SpriteRenderer marioSprite;
+    private bool faceRightState = true;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +18,22 @@ public class PlayerMovement : MonoBehaviour
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
         marioBody = GetComponent<Rigidbody2D>();
-
+        marioSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // toggle state
+        if (Input.GetKeyDown("a") && faceRightState){
+            faceRightState = false;
+            marioSprite.flipX = true;
+        }
 
+        if (Input.GetKeyDown("d") && !faceRightState){
+            faceRightState = true;
+            marioSprite.flipX = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
