@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0.0f;
             gameOverText.enabled = true;
             scoreText.transform.position = gameOverText.transform.position + new Vector3(0.0f, -90.0f, 0.0f);
-            retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -120.0f, 0.0f);
+            retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -210.0f, 0.0f);
             image.SetAlpha(10.0f);
         }
     }
