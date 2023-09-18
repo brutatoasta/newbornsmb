@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,37 +10,54 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 20;
     public float upSpeed = 10;
     private bool onGroundState = true;
-    
+
     private Rigidbody2D marioBody;
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
 
+    //UI
+    public Button retry;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
+    public Vector3 originalPosScoreText;
+    public Vector3 originalPosRetry;
+    public CanvasRenderer image;
+
+    // Enemy
     public JumpOverGoomba jumpOverGoomba;
 
     public GameObject enemies;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         // Set to be 30 FPS
-        Application.targetFrameRate =  30;
+        Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
-        jumpOverGoomba = GetComponent<JumpOverGoomba>();
+
+        gameOverText.enabled = false;
+        originalPosScoreText = scoreText.transform.position;
+        originalPosRetry = retry.transform.position;
+        image.SetAlpha(0.0f);
+
     }
-        
+
 
     // Update is called once per frame
     void Update()
     {
         // toggle state
-        if (Input.GetKeyDown("a") && faceRightState){
+        if (Input.GetKeyDown("a") && faceRightState)
+        {
             faceRightState = false;
             marioSprite.flipX = true;
         }
 
-        if (Input.GetKeyDown("d") && !faceRightState){
+        if (Input.GetKeyDown("d") && !faceRightState)
+        {
             faceRightState = true;
             marioSprite.flipX = false;
         }
@@ -51,25 +69,28 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // FixedUpdate is called 50 times a second
-    void  FixedUpdate()
+    void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        
-        if (Mathf.Abs(moveHorizontal) > 0){
+
+        if (Mathf.Abs(moveHorizontal) > 0)
+        {
             Vector2 movement = new Vector2(moveHorizontal, 0);
             // check if it doesn't go beyond maxSpeed
             if (marioBody.velocity.magnitude < maxSpeed)
-                    marioBody.AddForce(movement * speed);
+                marioBody.AddForce(movement * speed);
         }
 
         // stop
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d")){
+        if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+        {
             // stop
             marioBody.velocity = Vector2.zero;
         }
 
         // jump
-        if (Input.GetKeyDown("space") && onGroundState){
+        if (Input.GetKeyDown("space") && onGroundState)
+        {
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
         }
@@ -77,10 +98,15 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Death
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collided with goomba!");
             Time.timeScale = 0.0f;
+            gameOverText.enabled = true;
+            scoreText.transform.position = gameOverText.transform.position + new Vector3(0.0f, -90.0f, 0.0f);
+            retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -120.0f, 0.0f);
+            image.SetAlpha(10.0f);
         }
     }
 
@@ -98,15 +124,21 @@ public class PlayerMovement : MonoBehaviour
         // reset position
         marioBody.transform.position = new Vector3(-19.0f, 0.5f, 0.0f);
 
+        // reset rotation
+        marioBody.transform.rotation = Quaternion.identity;
+
         // reset sprite direction
         faceRightState = true;
         marioSprite.flipX = false;
 
-        // reset score
+        // reset UI
         scoreText.text = "Score: 0";
-
+        scoreText.transform.position = originalPosScoreText;
+        retry.transform.position = originalPosRetry;
+        image.SetAlpha(0.0f);
         jumpOverGoomba.score = 0;
-        
+        gameOverText.enabled = false;
+
         // reset Goomba
         foreach (Transform eachChild in enemies.transform)
         {
