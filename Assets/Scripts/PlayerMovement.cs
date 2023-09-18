@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 20;
     public float maxSpeed = 20;
     public float upSpeed = 10;
+    public float rotateSpeed = 0.1f;
     private bool onGroundState = true;
 
     private Rigidbody2D marioBody;
@@ -93,6 +94,19 @@ public class PlayerMovement : MonoBehaviour
         {
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+        }
+        // rotate clockwise
+        if (Input.GetKeyDown(","))
+        {
+            // marioBody.transform.Rotate(Vector3.back * rotateSpeed);
+            marioBody.AddTorque(rotateSpeed, ForceMode2D.Impulse);
+
+        }
+        if (Input.GetKeyDown("."))
+        {
+            // marioBody.transform.Rotate(Vector3.forward * rotateSpeed);
+            marioBody.AddTorque(-1 * rotateSpeed, ForceMode2D.Impulse);
+
         }
     }
 
