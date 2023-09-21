@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 originalPosRetry;
     public CanvasRenderer image;
 
+    // for animation
+    public Animator marioAnimator;
+
     // Enemy
     public JumpOverGoomba jumpOverGoomba;
 
@@ -43,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         originalPosScoreText = scoreText.transform.position;
         originalPosRetry = retry.transform.position;
         image.SetAlpha(0.0f);
+        // update animator state
+        marioAnimator.SetBool("onGround", onGroundState);
 
     }
 
@@ -55,18 +60,29 @@ public class PlayerMovement : MonoBehaviour
         {
             faceRightState = false;
             marioSprite.flipX = true;
+            if (marioBody.velocity.x > 0.1f)
+                marioAnimator.SetTrigger("onSkid");
         }
 
         if (Input.GetKeyDown("d") && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
+            if (marioBody.velocity.x < -0.1f)
+                marioAnimator.SetTrigger("onSkid");
+
         }
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ground")) onGroundState = true;
+        if (col.gameObject.CompareTag("Ground"))
+        {
+            onGroundState = true;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
+        }
     }
 
     // FixedUpdate is called 50 times a second
@@ -80,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
             // check if it doesn't go beyond maxSpeed
             if (marioBody.velocity.magnitude < maxSpeed)
                 marioBody.AddForce(movement * speed);
+
         }
 
         // stop
@@ -94,6 +111,8 @@ public class PlayerMovement : MonoBehaviour
         {
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
         }
         // rotate clockwise
         if (Input.GetKeyDown(","))

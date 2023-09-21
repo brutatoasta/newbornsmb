@@ -3702,6 +3702,7 @@ MonoBehaviour:
   originalPosScoreText: {x: 0, y: 0, z: 0}
   originalPosRetry: {x: 0, y: 0, z: 0}
   image: {fileID: 771523818}
+  marioAnimator: {fileID: 1922906970}
   jumpOverGoomba: {fileID: 1922906968}
   enemies: {fileID: 1834217282}
 --- !u!50 &1922906966
