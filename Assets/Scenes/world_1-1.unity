@@ -3697,6 +3697,7 @@ MonoBehaviour:
   maxSpeed: 5
   upSpeed: 30
   rotateSpeed: 50
+  deathImpulse: 0.1
   retry: {fileID: 879448950}
   scoreText: {fileID: 1670704104}
   gameOverText: {fileID: 1423639750}
@@ -3707,6 +3708,7 @@ MonoBehaviour:
   jumpOverGoomba: {fileID: 1922906968}
   enemies: {fileID: 1834217282}
   marioAudio: {fileID: 1922906971}
+  marioDeath: {fileID: 8300000, guid: 038bbbafa3d9ef841a45c486ce80026d, type: 3}
 --- !u!50 &1922906966
 Rigidbody2D:
   serializedVersion: 4

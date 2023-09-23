@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 20;
     public float upSpeed = 10;
     public float rotateSpeed = 0.1f;
-    public float deathImpulse = 0.1f;
+    public float deathImpulse = 50;
     private bool onGroundState = true;
 
     private Rigidbody2D marioBody;
@@ -40,12 +40,12 @@ public class PlayerMovement : MonoBehaviour
     // state
     [System.NonSerialized]
     public bool alive = true;
-    void PlayJumpSound()
+    public void PlayJumpSound()
     {
         // play jump sound
         marioAudio.PlayOneShot(marioAudio.clip);
     }
-    void PlayDeathImpulse()
+    public void PlayDeathImpulse()
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         image.SetAlpha(0.0f);
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
-  
+
 
     }
 
@@ -149,22 +149,24 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Death
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && alive)
         {
             Debug.Log("Collided with goomba!");
-            Time.timeScale = 0.0f;
-
-            // gameover canvas
-            gameOverText.enabled = true;
-            scoreText.transform.position = gameOverText.transform.position + new Vector3(0.0f, -90.0f, 0.0f);
-            retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -210.0f, 0.0f);
-            image.SetAlpha(10.0f);
 
             // play death animation
             marioAnimator.Play("mario-die");
             marioAudio.PlayOneShot(marioDeath);
             alive = false;
         }
+    }
+
+    public void GameOverScene()
+    {
+        Time.timeScale = 0.0f;
+        gameOverText.enabled = true;
+        scoreText.transform.position = gameOverText.transform.position + new Vector3(0.0f, -90.0f, 0.0f);
+        retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -210.0f, 0.0f);
+        image.SetAlpha(10.0f);
     }
 
     public void RestartButtonCallback(int input)
