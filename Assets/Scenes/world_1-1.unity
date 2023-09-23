@@ -3697,7 +3697,7 @@ MonoBehaviour:
   maxSpeed: 5
   upSpeed: 30
   rotateSpeed: 50
-  deathImpulse: 0.1
+  deathImpulse: 10
   retry: {fileID: 879448950}
   scoreText: {fileID: 1670704104}
   gameOverText: {fileID: 1423639750}
