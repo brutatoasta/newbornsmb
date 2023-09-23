@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 originalPosRetry;
     public CanvasRenderer image;
 
-    // for animation
+    // Animation
     public Animator marioAnimator;
 
     // Enemy
@@ -33,11 +33,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject enemies;
 
-    // for audio
+    // Audio
     public AudioSource marioAudio;
     public AudioClip marioDeath;
+    // Camera
+    public Transform gameCamera;
 
-    // state
+    // State
     [System.NonSerialized]
     public bool alive = true;
     public void PlayJumpSound()
@@ -204,6 +206,9 @@ public class PlayerMovement : MonoBehaviour
         image.SetAlpha(0.0f);
         jumpOverGoomba.score = 0;
         gameOverText.enabled = false;
+
+        // reset camera position
+        gameCamera.position = new Vector3(0, 0, -10);
 
         // reset Goomba
         foreach (Transform eachChild in enemies.transform)
