@@ -58,6 +58,7 @@
     },
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.projectLoadTimeout": 60,
-    "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current", // change this to suit your system where mono is installed
+    "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current",
     "omnisharp.useModernNet": true,
+    "dotnet.defaultSolution": "newbornsmb.sln"
 }

@@ -31,7 +31,14 @@ public class PlayerMovement : MonoBehaviour
     public JumpOverGoomba jumpOverGoomba;
 
     public GameObject enemies;
+    // for audio
+    public AudioSource marioAudio;
 
+    void PlayJumpSound()
+    {
+        // play jump sound
+        marioAudio.PlayOneShot(marioAudio.clip);
+    }
 
 
     // Start is called before the first frame update
