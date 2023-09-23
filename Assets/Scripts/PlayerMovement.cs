@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 20;
     public float upSpeed = 10;
     public float rotateSpeed = 0.1f;
+    public float deathImpulse = 0.1f;
     private bool onGroundState = true;
 
     private Rigidbody2D marioBody;
@@ -31,15 +32,23 @@ public class PlayerMovement : MonoBehaviour
     public JumpOverGoomba jumpOverGoomba;
 
     public GameObject enemies;
+
     // for audio
     public AudioSource marioAudio;
+    public AudioClip marioDeath;
 
+    // state
+    [System.NonSerialized]
+    public bool alive = true;
     void PlayJumpSound()
     {
         // play jump sound
         marioAudio.PlayOneShot(marioAudio.clip);
     }
-
+    void PlayDeathImpulse()
+    {
+        marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         image.SetAlpha(0.0f);
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+  
 
     }
 
@@ -143,10 +153,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Collided with goomba!");
             Time.timeScale = 0.0f;
+
+            // gameover canvas
             gameOverText.enabled = true;
             scoreText.transform.position = gameOverText.transform.position + new Vector3(0.0f, -90.0f, 0.0f);
             retry.transform.position = gameOverText.transform.position + new Vector3(0.0f, -210.0f, 0.0f);
             image.SetAlpha(10.0f);
+
+            // play death animation
+            marioAnimator.Play("mario-die");
+            marioAudio.PlayOneShot(marioDeath);
+            alive = false;
         }
     }
 
@@ -170,6 +187,10 @@ public class PlayerMovement : MonoBehaviour
         // reset sprite direction
         faceRightState = true;
         marioSprite.flipX = false;
+
+        // reset animation
+        marioAnimator.SetTrigger("gameRestart");
+        alive = true;
 
         // reset UI
         scoreText.text = "Score: 0";
