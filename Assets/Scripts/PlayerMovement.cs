@@ -105,44 +105,47 @@ public class PlayerMovement : MonoBehaviour
     // FixedUpdate is called 50 times a second
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-        if (Mathf.Abs(moveHorizontal) > 0)
+        if (alive)
         {
-            Vector2 movement = new Vector2(moveHorizontal, 0);
-            // check if it doesn't go beyond maxSpeed
-            if (marioBody.velocity.magnitude < maxSpeed)
-                marioBody.AddForce(movement * speed);
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        }
+            if (Mathf.Abs(moveHorizontal) > 0)
+            {
+                Vector2 movement = new Vector2(moveHorizontal, 0);
+                // check if it doesn't go beyond maxSpeed
+                if (marioBody.velocity.magnitude < maxSpeed)
+                    marioBody.AddForce(movement * speed);
 
-        // stop
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-        {
+            }
+
             // stop
-            marioBody.velocity = Vector2.zero;
-        }
+            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+            {
+                // stop
+                marioBody.velocity = Vector2.zero;
+            }
 
-        // jump
-        if (Input.GetKeyDown("space") && onGroundState)
-        {
-            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-            onGroundState = false;
-            // update animator state
-            marioAnimator.SetBool("onGround", onGroundState);
-        }
-        // rotate clockwise
-        if (Input.GetKeyDown(","))
-        {
-            // marioBody.transform.Rotate(Vector3.back * rotateSpeed);
-            marioBody.AddTorque(rotateSpeed, ForceMode2D.Impulse);
+            // jump
+            if (Input.GetKeyDown("space") && onGroundState)
+            {
+                marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+                onGroundState = false;
+                // update animator state
+                marioAnimator.SetBool("onGround", onGroundState);
+            }
+            // rotate clockwise
+            if (Input.GetKeyDown(","))
+            {
+                // marioBody.transform.Rotate(Vector3.back * rotateSpeed);
+                marioBody.AddTorque(rotateSpeed, ForceMode2D.Impulse);
 
-        }
-        if (Input.GetKeyDown("."))
-        {
-            // marioBody.transform.Rotate(Vector3.forward * rotateSpeed);
-            marioBody.AddTorque(-1 * rotateSpeed, ForceMode2D.Impulse);
+            }
+            if (Input.GetKeyDown("."))
+            {
+                // marioBody.transform.Rotate(Vector3.forward * rotateSpeed);
+                marioBody.AddTorque(-1 * rotateSpeed, ForceMode2D.Impulse);
 
+            }
         }
     }
 
