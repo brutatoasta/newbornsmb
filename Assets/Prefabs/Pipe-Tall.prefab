@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5446787768060504119}
   m_Layer: 3
   m_Name: Pipe-Body (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 504648247138647524}
   m_Layer: 3
   m_Name: Pipe-Body
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 2852221483355243640}
   m_Layer: 3
   m_Name: Pipe-Head
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

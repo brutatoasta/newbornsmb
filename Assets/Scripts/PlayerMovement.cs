@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
 
     // Collision
-    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
+    // int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     public void PlayJumpSound()
     {
         // play jump sound
@@ -100,14 +100,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {   // use tags
-        // if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles") || !onGroundState)
-
-        // use tags wrong
-        // if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
+        if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
 
 
         // use layer mask
-        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
+        // if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             // update animator state
