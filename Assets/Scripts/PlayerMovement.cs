@@ -36,12 +36,16 @@ public class PlayerMovement : MonoBehaviour
     // Audio
     public AudioSource marioAudio;
     public AudioClip marioDeath;
+
     // Camera
     public Transform gameCamera;
 
     // State
     [System.NonSerialized]
     public bool alive = true;
+
+    // Collision
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     public void PlayJumpSound()
     {
         // play jump sound
@@ -95,8 +99,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col)
-    {
-        if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
+    {   // use tags
+        // if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles") || !onGroundState)
+        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             // update animator state
