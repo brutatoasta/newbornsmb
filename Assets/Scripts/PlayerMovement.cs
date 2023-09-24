@@ -216,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
         gameOverText.enabled = false;
 
         // reset camera position
-        gameCamera.position = new Vector3(0, 0, -10);
+        gameCamera.position = new Vector3(-7.569899f, 4.774807f, -10);
 
         // reset Goomba
         foreach (Transform eachChild in enemies.transform)
