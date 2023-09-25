@@ -171,6 +171,35 @@ public class PlayerMovement : MonoBehaviour
             marioAudio.PlayOneShot(marioDeath);
             alive = false;
         }
+        // question box
+        if (other.gameObject.CompareTag("Question"))
+        {
+            Debug.Log("On Question!");
+            // get innermost question GameObject
+            GameObject questionGameObject = other.GetComponentInChildren<SpringJoint2D>().gameObject;
+            // check if enabled
+            string spriteName = questionGameObject.GetComponent<SpriteRenderer>().sprite.ToString();
+            if (spriteName != "question_block1_1")
+            {
+                // disable box movement 
+                questionGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                // change box sprite
+                // questionGameObject.GetComponent<SpriteRenderer>().sprite = "misc-3_41";
+                // spawn coin
+                // play sound effect
+                //
+
+            }
+            else
+            {
+                questionGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
+
+
+
+
+
+        }
     }
 
     public void GameOverScene()
