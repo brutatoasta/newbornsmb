@@ -6,47 +6,36 @@ using UnityEngine.UI;
 public class QuestionController : MonoBehaviour
 {
     public Animator questionAnimator;
+    public Animator coinAnimator;
     public AudioSource questionAudio;
     public AudioClip hitQuestionClip;
+    public Sprite endSprite;
     void Start()
     {
         questionAnimator = GetComponent<Animator>();
-        // coinBody = GetComponent<Rigidbody2D>();
-        // coinSprite = GetComponent<SpriteRenderer>();
-        // coinAnimator.SetBool("enabled", true);
-
-    }
-    void FixedUpdate()
-    {
-
-    }
-
-    void Update()
-    {
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // self is question, other is mario
-        // run animation
-        // questionAnimator.Play("question-die");
-        // disable box
-        Debug.Log("Hit question");
-        questionAnimator.SetTrigger("dieTrigger");
-        questionAudio.PlayOneShot(hitQuestionClip);
-        // questionAnimator
-        // change box sprite
+        if (questionAnimator.enabled)
+        {
+            Debug.Log("Hit question");
+            questionAnimator.SetTrigger("dieTrigger");
+            questionAudio.PlayOneShot(hitQuestionClip);
 
-        // spawn coin
-        // play sound effect
+            // spawn coin
+            coinAnimator.SetTrigger("jumpTrigger");
 
+        }
     }
-    void StopAnimation()
+    public void StopQuestionAnimation()
     {
-        // questionSR.sprite = endSprite;
+        questionAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = endSprite;
         questionAnimator.enabled = false;
-
     }
-
+    public void StopCoinAnimation()
+    {
+        coinAnimator.enabled = false;
+    }
 }
