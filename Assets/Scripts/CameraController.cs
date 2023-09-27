@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
         if (!(desiredX > startX && desiredX < endX))
             desiredX = transform.position.x;
         // check if desiredY is within startY and endY
-        if (true) //(!(desiredY > startY && desiredY < endY))
+        if (!(desiredY > startY && desiredY < endY))
             desiredY = transform.position.y;
 
         this.transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);

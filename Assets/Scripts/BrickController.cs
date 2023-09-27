@@ -16,10 +16,4 @@ public class BrickController : MonoBehaviour
         brickAnimator.SetTrigger("jumpTrigger");
         coinAnimator.SetTrigger("jumpTrigger");
     }
-
-    public void StopAnimation()
-    {
-        brickAnimator.enabled = false;
-        brickAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-    }
 }
