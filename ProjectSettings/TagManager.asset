@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Enemy
+  - Enemies
+  - Obstacles
+  - Question
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacles
   - Water
   - UI
   - Ground
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -42,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: coin
+    uniqueID: 2152389963
     locked: 0
