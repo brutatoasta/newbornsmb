@@ -7,13 +7,7 @@ public class QuestionController : MonoBehaviour
 {
     public Animator questionAnimator;
     public Animator coinAnimator;
-    public AudioSource questionAudio;
-    public AudioClip hitQuestionClip;
     public Sprite endSprite;
-    void Start()
-    {
-        questionAnimator = GetComponent<Animator>();
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,11 +15,11 @@ public class QuestionController : MonoBehaviour
         if (questionAnimator.enabled)
         {
             Debug.Log("Hit question");
-            questionAnimator.SetTrigger("dieTrigger");
-            questionAudio.PlayOneShot(hitQuestionClip);
-
             // spawn coin
+            coinAnimator.enabled = true;
             coinAnimator.SetTrigger("jumpTrigger");
+            questionAnimator.SetTrigger("dieTrigger");
+
 
         }
     }
@@ -33,9 +27,5 @@ public class QuestionController : MonoBehaviour
     {
         questionAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = endSprite;
         questionAnimator.enabled = false;
-    }
-    public void StopCoinAnimation()
-    {
-        coinAnimator.enabled = false;
     }
 }

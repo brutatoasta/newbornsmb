@@ -8,10 +8,6 @@ public class BrickController : MonoBehaviour
     public Animator brickAnimator;
     public Animator coinAnimator;
 
-    // void Start()
-    // {
-    //     coinAnimator.gameObject.SetActive(false);
-    // }
     void OnTriggerEnter2D(Collider2D other)
     {
         // self is question, other is mario
@@ -19,11 +15,11 @@ public class BrickController : MonoBehaviour
 
         brickAnimator.SetTrigger("jumpTrigger");
         coinAnimator.SetTrigger("jumpTrigger");
-
     }
+
     public void StopAnimation()
     {
         brickAnimator.enabled = false;
-        // coinAnimator.gameObject.SetActive(false);
+        brickAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

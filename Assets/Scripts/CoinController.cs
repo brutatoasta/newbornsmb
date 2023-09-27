@@ -14,6 +14,6 @@ public class CoinController : MonoBehaviour
     {
         coinAudio.PlayOneShot(coinClip);
         coinAnimator.enabled = false;
-        
+        coinAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
