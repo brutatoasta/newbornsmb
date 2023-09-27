@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 originalPosRetry;
     public CanvasRenderer image;
 
-    // for animation
+    // Animation
     public Animator marioAnimator;
 
     // Enemy
@@ -33,13 +33,21 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject enemies;
 
-    // for audio
+    // Audio
     public AudioSource marioAudio;
     public AudioClip marioDeath;
 
-    // state
+    // Camera
+    public Transform gameCamera;
+
+    // State
     [System.NonSerialized]
     public bool alive = true;
+
+    // Collision
+    // int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
+
+
     public void PlayJumpSound()
     {
         // play jump sound
@@ -93,8 +101,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Ground"))
+    {   // use tags
+        if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
+
+
+        // use layer mask
+        // if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             // update animator state
@@ -152,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Death
-        if (other.gameObject.CompareTag("Enemy") && alive)
+        if (other.gameObject.CompareTag("Enemies") && alive)
         {
             Debug.Log("Collided with goomba!");
 
@@ -161,6 +173,32 @@ public class PlayerMovement : MonoBehaviour
             marioAudio.PlayOneShot(marioDeath);
             alive = false;
         }
+        // // question box
+        // if (other.gameObject.CompareTag("Question"))
+        // {
+        //     Debug.Log("On Question!");
+        //     // get innermost question GameObject
+        //     GameObject questionGameObject = other.GetComponentInChildren<SpringJoint2D>().gameObject;
+        //     // check if enabled
+        //     Sprite currentSprite = questionGameObject.GetComponent<SpriteRenderer>().sprite;
+        //     if ((currentSprite != questionSprites[0]) || (currentSprite != questionSprites[1]))
+        //     {
+        //         // disable box movement 
+        //         questionGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        //         // change box sprite
+        //         questionGameObject.GetComponent<SpriteRenderer>().sprite = questionSprites[2];
+
+        //         // spawn coin
+
+        //         // play sound effect
+        //         //
+
+        //     }
+        //     else
+        //     {
+        //         questionGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        //     }
+        // }
     }
 
     public void GameOverScene()
@@ -204,6 +242,9 @@ public class PlayerMovement : MonoBehaviour
         image.SetAlpha(0.0f);
         jumpOverGoomba.score = 0;
         gameOverText.enabled = false;
+
+        // reset camera position
+        gameCamera.position = new Vector3(-7.569899f, 4.774807f, -10);
 
         // reset Goomba
         foreach (Transform eachChild in enemies.transform)
