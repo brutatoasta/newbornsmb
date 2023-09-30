@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeathAudio.clip);
+            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
             gameManager.GameOver();
             hudManager.GameOver();
