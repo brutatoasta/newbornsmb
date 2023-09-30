@@ -11,9 +11,9 @@ public class EnemyMovement : MonoBehaviour
     private int moveRight = -1;
     private Vector2 velocity;
     public Vector3 startPosition;
-
+    public Animator enemyAnimator;
     private Rigidbody2D enemyBody;
-
+    bool alive;
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -21,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
         originalX = transform.position.x;
         startPosition = transform.position;
         ComputeVelocity();
+        alive = true;
     }
     void ComputeVelocity()
     {
@@ -49,6 +50,8 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name);
+        enemyAnimator.SetTrigger("dieTrigger");
+        alive = false;
     }
     public void GameRestart()
     {
