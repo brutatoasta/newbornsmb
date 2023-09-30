@@ -44,6 +44,10 @@ public class CameraController : MonoBehaviour
         if (true) // (!(desiredY > startY && desiredY < endY))
             desiredY = transform.position.y;
 
-        this.transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);
+        transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);
+    }
+    public void GameRestart()
+    {
+        transform.position = new Vector3(-7.569899f, 4.774807f, -10);
     }
 }

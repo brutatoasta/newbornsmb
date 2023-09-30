@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private float enemyPatroltime = 2.0f;
     private int moveRight = -1;
     private Vector2 velocity;
-    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
-    
+    public Vector3 startPosition;
+
     private Rigidbody2D enemyBody;
 
     void Start()
@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
+        startPosition = transform.position;
         ComputeVelocity();
     }
     void ComputeVelocity()
@@ -48,5 +49,12 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name);
+    }
+    public void GameRestart()
+    {
+        transform.position = startPosition;
+        originalX = transform.position.x;
+        moveRight = -1;
+        ComputeVelocity();
     }
 }

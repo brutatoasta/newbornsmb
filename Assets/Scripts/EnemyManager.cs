@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            child.GetComponent<EnemyMovementWeek3>().GameRestart();
+            child.GetComponent<EnemyMovement>().GameRestart();
         }
     }
 }
