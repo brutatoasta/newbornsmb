@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Audio
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeathAudio;
 
     // State
     [System.NonSerialized]
@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
             gameManager.GameOver();
             hudManager.GameOver();
