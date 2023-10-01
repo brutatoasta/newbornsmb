@@ -24,12 +24,13 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource marioDeathAudio;
 
     // State
-    [System.NonSerialized]
+    // [System.NonSerialized]
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;
     public GameManager gameManager;
     public HUDManager hudManager;
+
     // Collision
     // int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
@@ -157,15 +158,17 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemies") && alive)
         {
             Debug.Log("Collided with goomba!");
-
-            // play death animation
-            marioAnimator.Play("mario-die");
-            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-            alive = false;
-            gameManager.GameOver();
-            hudManager.GameOver();
         }
 
+    }
+    public void Die()
+    {
+        // play death animation
+        marioAnimator.Play("mario-die");
+        marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+        alive = false;
+        gameManager.GameOver();
+        hudManager.GameOver();
     }
 
     public void RestartButtonCallback(int input)
@@ -180,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
     public void GameRestart()
     {
         // reset position
-        marioBody.transform.position = new Vector3(-19.0f, 0.5f, 0.0f);
+        marioBody.transform.position = new Vector3(-19.0f, 1.5f, 0.0f);
         marioBody.velocity = new Vector2(0, 0);
         // reset sprite direction
         faceRightState = true;
