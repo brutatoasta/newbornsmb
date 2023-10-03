@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
         {
             // move goomba
             // todo uncomment movegoomba
-            // Movegoomba();
+            Movegoomba();
         }
         else
         {

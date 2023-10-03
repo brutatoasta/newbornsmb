@@ -63,6 +63,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -7383545871367040490}
+  - {fileID: 8028471164966024370}
   m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
@@ -505,5 +506,19 @@ AudioMixerEffectController:
   - m_ParameterName: Sidechain Mix
     m_GUID: 21165306b909e1c4eafe70d8636c02dc
   m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &8028471164966024370
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4c0ce647117028a41a3d7da2eb081761
+  m_EffectName: Send
+  m_MixLevel: 86e9f0780c72a6b4d85209a4f15a4711
+  m_Parameters: []
+  m_SendTarget: {fileID: 7233511601615743934}
   m_EnableWetMix: 0
   m_Bypass: 0
