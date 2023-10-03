@@ -609,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 1922906965}
     - target: {fileID: 6782655160768224909, guid: 89eeccbf68453db47b99abbd49ed0d97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.43
+      value: -35.99
       objectReference: {fileID: 0}
     - target: {fileID: 6782655160768224909, guid: 89eeccbf68453db47b99abbd49ed0d97, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2755,7 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63856cd5e57d5e47ab0d1f50b2221b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMovement: {fileID: 8023432032071311146}
+  enemyMovement: {fileID: 0}
   playerMovement: {fileID: 1922906965}
   audioSource: {fileID: 1533956906}
 --- !u!82 &1533956906
@@ -4686,17 +4686,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5171977fd47cc649bfa50dbaafb61c2, type: 3}
---- !u!114 &8023432032071311146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4751714027623436848, guid: 89eeccbf68453db47b99abbd49ed0d97, type: 3}
-  m_PrefabInstance: {fileID: 4042278218444440452}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d8584c499791145aaf7db33e8c182f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8453801201445163944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6782655160768224909, guid: 89eeccbf68453db47b99abbd49ed0d97, type: 3}
