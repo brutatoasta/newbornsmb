@@ -13,7 +13,9 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 startPosition;
     public Animator enemyAnimator;
     private Rigidbody2D enemyBody;
-    bool alive;
+    public GameManager gameManager;
+    public PlayerMovement playerMovement;
+    public bool alive;
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -35,7 +37,9 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
-        {// move goomba
+        {
+            // move goomba
+            // todo uncomment movegoomba
             Movegoomba();
         }
         else
@@ -50,11 +54,27 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Player") && alive)
+        {
+            playerMovement.Die();
+        }
+    }
+    public void Die()
+    {
         enemyAnimator.SetTrigger("dieTrigger");
         alive = false;
+        gameManager.IncreaseScore(1);
+    }
+    public void DieCallback()
+    {
+        gameObject.SetActive(false);
     }
     public void GameRestart()
     {
+        gameObject.SetActive(true);
+        alive = true;
+        // todo change animator state
+        enemyAnimator.Play("goomba-walk");
         transform.position = startPosition;
         originalX = transform.position.x;
         moveRight = -1;
