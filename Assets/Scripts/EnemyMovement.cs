@@ -56,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Player") && alive)
         {
-            playerMovement.Die();
+            gameManager.MarioDeath();
         }
     }
     public void Die()
