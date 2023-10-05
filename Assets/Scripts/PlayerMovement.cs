@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public HUDManager hudManager;
 
     // Collision
-    // int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
 
     public void PlayJumpSound()
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // use layer mask
-        // if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
+        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             // update animator state
