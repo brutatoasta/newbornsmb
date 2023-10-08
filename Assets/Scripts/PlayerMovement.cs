@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     public float speed = 20;
     public float maxSpeed = 20;
@@ -86,13 +86,13 @@ public class PlayerMovement : MonoBehaviour
         if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
 
 
-        // use layer mask
-        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
-        {
-            onGroundState = true;
-            // update animator state
-            marioAnimator.SetBool("onGround", onGroundState);
-        }
+            // use layer mask
+            if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
+            {
+                onGroundState = true;
+                // update animator state
+                marioAnimator.SetBool("onGround", onGroundState);
+            }
     }
 
     // FixedUpdate is called 50 times a second

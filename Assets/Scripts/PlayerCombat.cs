@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : Singleton<PlayerCombat>
 {
     public EnemyMovement enemyMovement;
     public PlayerMovement playerMovement;
