@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : Singleton<PlayerMovement>
 {
     public float speed = 20;
     public float maxSpeed = 20;
     public float upSpeed = 10;
-    public float deathImpulse = 50;
+    public float deathImpulse = 5000;
     private bool onGroundState = true;
 
     private Rigidbody2D marioBody;
@@ -48,6 +48,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.activeSceneChanged += SetStartingPosition;
         // Set to be 30 FPS
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
@@ -164,13 +165,32 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public void Die()
     {
         // play death animation
-        marioAnimator.Play("mario-die");
-        marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-        alive = false;
-        gameManager.GameOver();
-        hudManager.GameOver();
-    }
 
+
+        if (alive)
+        {
+            marioAnimator.Play("mario-die");
+
+            alive = false;
+            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+            hudManager.GameOver();
+            StartCoroutine(PlayDeathImpulseThenStop());
+
+        }
+
+        // marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+
+        // gameManager.GameOver();
+
+    }
+    private IEnumerator PlayDeathImpulseThenStop()
+    {
+        PlayDeathImpulse();
+        yield return new WaitForSeconds(1);
+        gameManager.GameOver();
+
+
+    }
     public void RestartButtonCallback(int input)
     {
         Debug.Log("Restart!");
@@ -192,5 +212,19 @@ public class PlayerMovement : Singleton<PlayerMovement>
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
+    }
+
+    public void SetStartingPosition(Scene current, Scene next)
+    {
+        if (next.name == "world_1-2")
+        {
+            // change the position accordingly in your World-1-2 case
+            this.transform.position = new Vector3(2.91f, 1.5f, 0.0f);
+        }
+        if (next.name == "world_1-1")
+        {
+            // change the position accordingly in your World-1-2 case
+            this.transform.position = new Vector3(-19f, 1.5f, 0.0f);
+        }
     }
 }
