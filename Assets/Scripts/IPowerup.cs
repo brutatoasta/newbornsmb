@@ -28,5 +28,5 @@ public enum PowerupType
 
 public interface IPowerupApplicable
 {
-    public void RequestPowerupEffect(Powerup i);
+    public void RequestPowerupEffect(IPowerup i);
 }

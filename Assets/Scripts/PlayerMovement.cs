@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource marioDeathAudio;
 
     // State
-    // [System.NonSerialized]
+    [System.NonSerialized]
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;

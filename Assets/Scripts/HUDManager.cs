@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     private Vector3[] scoreTextPosition = {
-        new Vector3(0, 0, 0),
-        new Vector3(0, 0, 0)
+        new(0, 0, 0),
+        new(0, 0, 0)
         };
     private Vector3[] restartButtonPosition = {
-        new Vector3(0, 0, 0),
-        new Vector3(0, 0, 0)
+        new(0, 0, 0),
+        new(0, 0, 0)
     };
     //UI
     public Button restartButton;
@@ -23,16 +23,19 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
+    }
+
+    void Awake()
+    {
         gameOverText.enabled = false;
         scoreTextPosition[0] = scoreText.transform.localPosition;
         restartButtonPosition[0] = restartButton.transform.localPosition;
         scoreTextPosition[1] = gameOverText.transform.localPosition + new Vector3(0.0f, -90.0f, 0.0f);
         restartButtonPosition[1] = gameOverText.transform.localPosition + new Vector3(0.0f, -210.0f, 0.0f);
         image.SetAlpha(0.0f);
-    }
-
-    void Awake()
-    {
+        Debug.Log("ovar here");
         // other instructions
         // subscribe to events
         GameManager.instance.gameStart.AddListener(GameStart);
