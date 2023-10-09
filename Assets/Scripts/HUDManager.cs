@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class HUDManager : Singleton<HUDManager>
+public class HUDManager : MonoBehaviour
 {
     private Vector3[] scoreTextPosition = {
         new Vector3(0, 0, 0),
@@ -31,6 +31,16 @@ public class HUDManager : Singleton<HUDManager>
         image.SetAlpha(0.0f);
     }
 
+    void Awake()
+    {
+        // other instructions
+        // subscribe to events
+        GameManager.instance.gameStart.AddListener(GameStart);
+        GameManager.instance.gameOver.AddListener(GameOver);
+        GameManager.instance.gameRestart.AddListener(GameStart);
+        GameManager.instance.scoreChange.AddListener(SetScore);
+
+    }
     // Update is called once per frame
     void Update()
     {

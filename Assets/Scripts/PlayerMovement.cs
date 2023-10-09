@@ -4,12 +4,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class PlayerMovement : Singleton<PlayerMovement>
+public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20;
-    public float maxSpeed = 20;
-    public float upSpeed = 10;
-    public float deathImpulse = 5000;
+    public GameConstants gameConstants;
+    float speed;
+    float maxSpeed;
+    float upSpeed;
+    float deathImpulse;
     private bool onGroundState = true;
 
     private Rigidbody2D marioBody;
@@ -48,7 +49,10 @@ public class PlayerMovement : Singleton<PlayerMovement>
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.activeSceneChanged += SetStartingPosition;
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
         // Set to be 30 FPS
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
@@ -56,6 +60,15 @@ public class PlayerMovement : Singleton<PlayerMovement>
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
     }
+
+
+    void Awake()
+    {
+        // other instructions
+        // subscribe to Game Restart event
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
+
 
     // Update is called once per frame
     void Update()
