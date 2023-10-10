@@ -3680,6 +3680,7 @@ MonoBehaviour:
   marioDeath:
     m_PersistentCalls:
       m_Calls: []
+  gameScore: {fileID: 11400000, guid: 448da98a8b4b4524791f34a6817b7b3b, type: 2}
 --- !u!4 &2077207360
 Transform:
   m_ObjectHideFlags: 0

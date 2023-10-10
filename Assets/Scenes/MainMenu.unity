@@ -672,7 +672,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 426555311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1527159285}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetHighScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &426555313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1295,14 +1307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383b6d51b44452049958c5533fdedbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
-  maxSpeed: 5
-  upSpeed: 30
-  deathImpulse: 10
+  gameConstants: {fileID: 11400000, guid: b6fbcc67ea5b1f946a347fa3db2157e0, type: 2}
   marioAnimator: {fileID: 631078036}
   marioAudio: {fileID: 631078033}
   marioDeathAudio: {fileID: 631078033}
-  alive: 1
   gameManager: {fileID: 0}
   hudManager: {fileID: 0}
 --- !u!50 &631078039
@@ -1978,31 +1986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1527159287}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: gameStart
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1527159287}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: gameStart
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   gameRestart:
     m_PersistentCalls:
       m_Calls: []
@@ -2015,6 +1999,7 @@ MonoBehaviour:
   marioDeath:
     m_PersistentCalls:
       m_Calls: []
+  gameScore: {fileID: 11400000, guid: 448da98a8b4b4524791f34a6817b7b3b, type: 2}
 --- !u!4 &1527159286
 Transform:
   m_ObjectHideFlags: 0

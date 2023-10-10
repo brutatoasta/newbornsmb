@@ -12,3 +12,5 @@
 - highscore persist past crashes and shutdowns
 - loading screen
 - restart button not working in 1-2
+- why does intvariable score reset between scenes (done)
+    - forgot to subscribe scene manager scene change in gamemanager.start()

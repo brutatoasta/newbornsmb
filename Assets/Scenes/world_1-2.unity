@@ -869,6 +869,7 @@ MonoBehaviour:
   marioDeath:
     m_PersistentCalls:
       m_Calls: []
+  gameScore: {fileID: 11400000, guid: 448da98a8b4b4524791f34a6817b7b3b, type: 2}
 --- !u!4 &254257004
 Transform:
   m_ObjectHideFlags: 0
@@ -996,6 +997,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1549092149}
   m_SourcePrefab: {fileID: 100100000, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+--- !u!114 &267849776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7441537021463262942, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+  m_PrefabInstance: {fileID: 267849775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5940fc5f37e91a942a305910694f505a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &275621103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
@@ -2559,7 +2571,7 @@ MonoBehaviour:
   marioAudio: {fileID: 723112162}
   marioDeathAudio: {fileID: 646611039}
   gameManager: {fileID: 254257003}
-  hudManager: {fileID: 0}
+  hudManager: {fileID: 267849776}
 --- !u!50 &723112166
 Rigidbody2D:
   serializedVersion: 4

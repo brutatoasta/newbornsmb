@@ -11,13 +11,16 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent<int> scoreChange;
     public UnityEvent gameOver;
     public UnityEvent marioDeath;
-
-    private int score = 0;
+    public IntVariable gameScore;
 
     void Start()
     {
+        Debug.Log("setvalue0");
+        gameScore.SetValue(0);
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+        // subscribe to scene manager scene change
+        SceneManager.activeSceneChanged += SceneSetup;
     }
 
     // Update is called once per frame
@@ -29,8 +32,8 @@ public class GameManager : Singleton<GameManager>
     public void GameRestart()
     {
         // reset score
-        score = 0;
-        SetScore(score);
+        gameScore.SetValue(0);
+        SetScore(gameScore.Value);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
         // subscribe to scene manager scene change
@@ -39,12 +42,12 @@ public class GameManager : Singleton<GameManager>
     public void SceneSetup(Scene current, Scene next)
     {
         gameStart.Invoke();
-        SetScore(score);
+        SetScore(gameScore.Value);
     }
     public void IncreaseScore(int increment)
     {
-        score += increment;
-        SetScore(score);
+        gameScore.ApplyChange(increment);
+        SetScore(gameScore.Value);
     }
 
     public void SetScore(int score)
@@ -52,6 +55,10 @@ public class GameManager : Singleton<GameManager>
         scoreChange.Invoke(score);
     }
 
+    public void ResetHighScore()
+    {
+        gameScore.ResetHighestValue();
+    }
 
     public void GameOver()
     {
