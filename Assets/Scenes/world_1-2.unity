@@ -897,6 +897,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 267849777}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseButtonController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5280434648745725599, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -989,6 +1001,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: playIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d2881fd1fd04bb248865e29307387eae, type: 3}
+    - target: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: pauseIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dff97715c2980747a546307e33bd5e0, type: 3}
+    - target: {fileID: 8255255006500781082, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dff97715c2980747a546307e33bd5e0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1006,6 +1030,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5940fc5f37e91a942a305910694f505a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &267849777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+  m_PrefabInstance: {fileID: 267849775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a26ea731c59c41b6a4df333797819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &281620882
@@ -4806,7 +4841,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
   enemyAnimator: {fileID: 1888824962875825548}
-  gameManager: {fileID: 254257003}
   playerMovement: {fileID: 723112165}
   alive: 0
 --- !u!50 &4412986136425251611
