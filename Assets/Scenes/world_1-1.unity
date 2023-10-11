@@ -820,37 +820,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &507019368
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 507019369}
-  m_Layer: 0
-  m_Name: Audio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &507019369
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507019368}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.274382, y: 6.0333586, z: 0.007804431}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517604786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,6 +2612,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1550050356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+  m_PrefabInstance: {fileID: 7388276872211572812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a26ea731c59c41b6a4df333797819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1598625716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7563227861711434402, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
@@ -4011,6 +3991,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1550050356}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147691540043128400, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseButtonController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5280434648745725599, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4111,6 +4103,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: playIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d2881fd1fd04bb248865e29307387eae, type: 3}
+    - target: {fileID: 8042908724496685466, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: pauseIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dff97715c2980747a546307e33bd5e0, type: 3}
+    - target: {fileID: 8255255006500781082, guid: 3629a42e8b801544382c3982ad0960c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dff97715c2980747a546307e33bd5e0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4267,6 +4271,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2077207360}
   - {fileID: 519420032}
   - {fileID: 1922906964}
   - {fileID: 163141597}
@@ -4275,5 +4280,3 @@ SceneRoots:
   - {fileID: 838240237}
   - {fileID: 1797870369}
   - {fileID: 7388276872211572812}
-  - {fileID: 2077207360}
-  - {fileID: 507019369}

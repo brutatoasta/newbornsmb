@@ -14,3 +14,6 @@
 - restart button not working in 1-2
 - why does intvariable score reset between scenes (done)
     - forgot to subscribe scene manager scene change in gamemanager.start()
+
+- added cinemachine camera to 1-2
+- not sure why ingamecanvas is not interactable in world 1-2

@@ -24,6 +24,7 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
 
     public void ButtonClick()
     {
+        Debug.Log("clikckck");
         Time.timeScale = isPaused ? 1.0f : 0.0f;
         isPaused = !isPaused;
         if (isPaused)
