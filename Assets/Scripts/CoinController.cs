@@ -10,12 +10,14 @@ public class CoinController : MonoBehaviour
     public Animator coinAnimator;
     public AudioSource coinAudio;
     public AudioClip coinClip;
-    
+    public GameManager gameManager;
+
     public void StopCoinAnimation()
     {
         coinAudio.PlayOneShot(coinClip);
         coinAnimator.enabled = false;
         coinAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        coinAnimator.gameObject.GetComponent<AnimationEventIntTool>().TriggerIntEvent();
+        // coinAnimator.gameObject.GetComponent<AnimationEventIntTool>().TriggerIntEvent();
+        GameManager.instance.IncreaseScore(1);
     }
 }

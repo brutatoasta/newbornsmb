@@ -736,39 +736,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &488973998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9154545733088899022, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
-  m_PrefabInstance: {fileID: 624205017}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &488974004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488973998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &501807915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,10 +1104,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9154545733088899022, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 488974004}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
 --- !u!1 &699700403
 GameObject:
@@ -2141,143 +2105,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1207781794}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
---- !u!1 &1207781788 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-  m_PrefabInstance: {fileID: 1192476997}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1207781794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207781788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &1254215676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9154545733088899022, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
-  m_PrefabInstance: {fileID: 5305048039874764879}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1254215682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254215676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &1290547492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-  m_PrefabInstance: {fileID: 5437054282503919598}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1290547498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290547492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &1298660363 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-  m_PrefabInstance: {fileID: 1598735282}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1298660369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298660363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1299137166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,10 +2731,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1298660369}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
 --- !u!1 &1616820891 stripped
 GameObject:
@@ -2997,39 +2823,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!1 &1758033548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-  m_PrefabInstance: {fileID: 7774254395889858459}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1758033554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758033548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c4af6eaf7b99a418fca42c5b6210a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077207359}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1797870366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,7 +3718,7 @@ PrefabInstance:
     - target: {fileID: 1724868858232363406, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
       propertyPath: animationEventIntTool
       value: 
-      objectReference: {fileID: 1254215682}
+      objectReference: {fileID: 0}
     - target: {fileID: 2538051950915690045, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
       propertyPath: m_Name
       value: Brick-Coin
@@ -3981,10 +3774,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9154545733088899022, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1254215682}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b7b90acd32604bb947c953ed1a27d, type: 3}
 --- !u!1001 &5437054282503919598
 PrefabInstance:
@@ -4065,10 +3855,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1290547498}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
 --- !u!1001 &6283348235950931606
 PrefabInstance:
@@ -4412,10 +4199,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4208446649494866896, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1758033554}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
 --- !u!1001 &7911772434991033319
 PrefabInstance:
