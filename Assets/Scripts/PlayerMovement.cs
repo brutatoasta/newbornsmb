@@ -193,14 +193,12 @@ public class PlayerMovement : MonoBehaviour
 
         // marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
 
-        // gameManager.GameOver();
-
     }
     private IEnumerator PlayDeathImpulseThenStop()
     {
         PlayDeathImpulse();
         yield return new WaitForSeconds(1);
-        gameManager.GameOver();
+        GameManager.instance.GameOver();
 
 
     }

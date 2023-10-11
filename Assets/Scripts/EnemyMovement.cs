@@ -13,7 +13,6 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 startPosition;
     public Animator enemyAnimator;
     private Rigidbody2D enemyBody;
-    public GameManager gameManager;
     public PlayerMovement playerMovement;
     public bool alive;
     void Start()
@@ -56,14 +55,14 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Player") && alive)
         {
-            gameManager.MarioDeath();
+            GameManager.instance.MarioDeath();
         }
     }
     public void Die()
     {
         enemyAnimator.SetTrigger("dieTrigger");
         alive = false;
-        gameManager.IncreaseScore(1);
+        GameManager.instance.IncreaseScore(1);
     }
     public void DieCallback()
     {

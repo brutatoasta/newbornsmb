@@ -10,7 +10,6 @@ public class CoinController : MonoBehaviour
     public Animator coinAnimator;
     public AudioSource coinAudio;
     public AudioClip coinClip;
-    public GameManager gameManager;
 
     public void StopCoinAnimation()
     {
