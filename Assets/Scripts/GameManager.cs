@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent gameOver;
     public UnityEvent marioDeath;
     public IntVariable gameScore;
-
+    public bool isPaused = false;
     void Start()
     {
         Debug.Log("setvalue0");
@@ -33,13 +33,17 @@ public class GameManager : Singleton<GameManager>
     public void GamePause()
     {
         Time.timeScale = 0;
+        isPaused = true;
         // pause audiolistener
+        AudioListener.pause = true;
         gamePause.Invoke();
 
     }
     public void GamePlay()
     {
         Time.timeScale = 1;
+        isPaused = false;
+        AudioListener.pause = false;
         gamePlay.Invoke();
     }
     public void GameRestart()
@@ -49,6 +53,8 @@ public class GameManager : Singleton<GameManager>
         SetScore(gameScore.Value);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
+
+        isPaused = false;
         // subscribe to scene manager scene change
         SceneManager.activeSceneChanged += SceneSetup;
     }

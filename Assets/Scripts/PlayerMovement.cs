@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         // other instructions
         // subscribe to Game Restart event
         GameManager.instance.gameRestart.AddListener(GameRestart);
-    }
+            }
 
 
     // Update is called once per frame
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
     // FixedUpdate is called 50 times a second
     void FixedUpdate()
     {
-        if (alive && moving)
+        if (alive && moving && !GameManager.instance.isPaused)
         {
             Move(faceRightState == true ? 1 : -1);
         }
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (alive && onGroundState)
+        if (alive && onGroundState && !GameManager.instance.isPaused)
         {
             // jump
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpHold()
     {
-        if (alive && jumpedState)
+        if (alive && jumpedState && !GameManager.instance.isPaused)
         {
             // jump higher
             marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);

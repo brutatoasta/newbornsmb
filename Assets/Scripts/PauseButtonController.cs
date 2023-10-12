@@ -24,18 +24,15 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
 
     public void ButtonClick()
     {
-        Time.timeScale = isPaused ? 1.0f : 0.0f;
         isPaused = !isPaused;
         if (isPaused)
         {
-            GameManager.instance.GamePause();
-            AudioListener.pause = true;
+            GameManager.instance.GamePause();    
             image.sprite = playIcon;
         }
         else
         {
             GameManager.instance.GamePlay();
-            AudioListener.pause = false;
             image.sprite = pauseIcon;
         }
     }
