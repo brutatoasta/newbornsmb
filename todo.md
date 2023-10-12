@@ -16,4 +16,5 @@
     - forgot to subscribe scene manager scene change in gamemanager.start()
 
 - added cinemachine camera to 1-2
-- not sure why ingamecanvas is not interactable in world 1-2
+- not sure why ingamecanvas is not interactable in world 1-2 (done)
+    - forgot to add event system
