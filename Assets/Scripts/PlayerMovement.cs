@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;
-    public GameManager gameManager;
     public HUDManager hudManager;
 
     // Collision

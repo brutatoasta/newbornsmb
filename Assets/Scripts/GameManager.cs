@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager>
     // events
     public UnityEvent gameStart;
     public UnityEvent gameRestart;
+    public UnityEvent gamePause;
+    public UnityEvent gamePlay;
     public UnityEvent<int> scoreChange;
     public UnityEvent gameOver;
     public UnityEvent marioDeath;
@@ -28,7 +30,18 @@ public class GameManager : Singleton<GameManager>
     {
 
     }
+    public void GamePause()
+    {
+        Time.timeScale = 0;
+        // pause audiolistener
+        gamePause.Invoke();
 
+    }
+    public void GamePlay()
+    {
+        Time.timeScale = 1;
+        gamePlay.Invoke();
+    }
     public void GameRestart()
     {
         // reset score

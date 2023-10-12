@@ -17,6 +17,7 @@ public class HUDManager : MonoBehaviour
     //UI
     public Button restartButton;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI pauseText;
     public TextMeshProUGUI gameOverText;
     public CanvasRenderer image;
 
@@ -30,12 +31,13 @@ public class HUDManager : MonoBehaviour
     void Awake()
     {
         gameOverText.enabled = false;
+        pauseText.enabled = false;
         scoreTextPosition[0] = scoreText.transform.localPosition;
         restartButtonPosition[0] = restartButton.transform.localPosition;
         scoreTextPosition[1] = gameOverText.transform.localPosition + new Vector3(0.0f, -90.0f, 0.0f);
         restartButtonPosition[1] = gameOverText.transform.localPosition + new Vector3(0.0f, -210.0f, 0.0f);
         image.SetAlpha(0.0f);
-        Debug.Log("ovar here");
+
         // other instructions
         // subscribe to events
         GameManager.instance.gameStart.AddListener(GameStart);
@@ -43,13 +45,24 @@ public class HUDManager : MonoBehaviour
         GameManager.instance.gameRestart.AddListener(GameStart);
         GameManager.instance.scoreChange.AddListener(SetScore);
 
+        GameManager.instance.gamePause.AddListener(GamePause);
+        GameManager.instance.gamePlay.AddListener(GamePlay);
+
     }
     // Update is called once per frame
     void Update()
     {
 
     }
+    public void GamePause()
+    {
+        pauseText.enabled = true;
+    }
 
+    public void GamePlay()
+    {
+        pauseText.enabled = false;
+    }
     public void GameStart()
     {
         // hide gameover panel
