@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent gameRestart;
     public UnityEvent gamePause;
     public UnityEvent gamePlay;
+    public UnityEvent resetHighscore;
     public UnityEvent<int> scoreChange;
     public UnityEvent gameOver;
     public UnityEvent marioDeath;
@@ -77,6 +78,7 @@ public class GameManager : Singleton<GameManager>
     public void ResetHighScore()
     {
         gameScore.ResetHighestValue();
+        resetHighscore.Invoke();
     }
 
     public void GameOver()

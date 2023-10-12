@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
     public AudioSource letsRoll;
+    TextMeshProUGUI highscore;
     // Start is called before the first frame update
+    void Awake()
+    {
+        GameManager.instance.resetHighscore.AddListener(SetScore);
+    }
     void Start()
     {
-
+        highscore = GameObject.Find("Highscore").GetComponent<TextMeshProUGUI>();
+        SetScore();
     }
 
+    public void SetScore()
+    {
+        highscore.text = "TOP- " + GameManager.instance.gameScore.previousHighestValue.ToString("000000");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +36,7 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator PlayAudioThenLoadScene()
     {
         letsRoll.PlayOneShot(letsRoll.clip);
-        yield return new WaitUntil(() => letsRoll.isPlaying == false);
+        yield return new WaitUntil(() => !letsRoll.isPlaying);
         Debug.Log("Load world_1-1");
         SceneManager.LoadSceneAsync("world_1-1", LoadSceneMode.Single);
     }
