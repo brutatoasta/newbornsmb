@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     public IntVariable gameScore;
     public bool isPaused = false;
 
+    public int scoreMultiplier = 1;
     public int currentScene;
     public int nextScene;
     void Start()
@@ -70,7 +71,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void IncreaseScore(int increment)
     {
-        gameScore.ApplyChange(increment);
+        gameScore.ApplyChange(increment * scoreMultiplier);
         SetScore(gameScore.Value);
     }
 

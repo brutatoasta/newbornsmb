@@ -20,3 +20,4 @@
     - forgot to add event system
 
 - change last coin brick to powerup
+    - treat brick/block as a spawner

@@ -4,19 +4,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinController : MonoBehaviour
+public class CoinController : BasePowerup
 {
 
-    public Animator coinAnimator;
     public AudioSource coinAudio;
     public AudioClip coinClip;
 
+    protected override void Start()
+    {
+        base.Start(); // call base class Start()
+        this.type = PowerupType.Coin;
+    }
+    public override void ApplyPowerup(MonoBehaviour i)
+    {
+        Debug.Log("collide");
+    }
+
+    public override void SpawnPowerup()
+    {
+        spawned = true;
+    }
+
     public void StopCoinAnimation()
     {
-        coinAudio.PlayOneShot(coinClip);
-        coinAnimator.enabled = false;
-        coinAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        // coinAnimator.gameObject.GetComponent<AnimationEventIntTool>().TriggerIntEvent();
+
         GameManager.instance.IncreaseScore(1);
+        StartCoroutine(PlayAudioThenDestroy());
+    }
+    private IEnumerator PlayAudioThenDestroy()
+    {
+
+        coinAudio.PlayOneShot(coinClip);
+        yield return new WaitUntil(() => !coinAudio.isPlaying);
+        DestroyPowerup();
+
     }
 }

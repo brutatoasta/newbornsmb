@@ -17,10 +17,12 @@ public class MagicMushroomPowerup : BasePowerup
     {
         if (col.gameObject.CompareTag("Player") && spawned)
         {
-            // TODO: do something when colliding with Player
+            // 2x score multiplier
+            GameManager.instance.scoreMultiplier = 2;
 
-            // then destroy powerup (optional)
-            DestroyPowerup();
+            StartCoroutine(PlayAudioThenDestroy());
+
+
 
         }
         else if (col.gameObject.layer == 10) // else if hitting Pipe, flip travel direction
@@ -33,11 +35,20 @@ public class MagicMushroomPowerup : BasePowerup
             }
         }
     }
+    private IEnumerator PlayAudioThenDestroy()
+    {
+        AudioSource powerupAudio = gameObject.GetComponent<AudioSource>();
+        powerupAudio.PlayOneShot(powerupAudio.clip);
+        yield return new WaitUntil(() => !powerupAudio.isPlaying);
+        DestroyPowerup();
 
+    }
     // interface implementation
     public override void SpawnPowerup()
     {
         spawned = true;
+        gameObject.GetComponent<Animator>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
     }
 
@@ -46,6 +57,8 @@ public class MagicMushroomPowerup : BasePowerup
     public override void ApplyPowerup(MonoBehaviour i)
     {
         // TODO: do something with the object
+        Debug.Log("collide");
+        // DestroyPowerup();
 
     }
 }

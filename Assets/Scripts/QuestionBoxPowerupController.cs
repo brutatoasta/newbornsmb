@@ -1,42 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
 {
-    public Animator powerupAnimator;
-    public BasePowerup powerup; // reference to this question box's powerup
-
-    void Start()
+    public Animator questionAnimator;
+    Animator powerupAnimator;
+    public Sprite disabledBlock;
+    public BasePowerup powerup;
+    void OnTriggerEnter2D(Collider2D other)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player" && !powerup.hasSpawned)
+        questionAnimator.SetTrigger("dieTrigger");
+        // if there is a powerup
+        if (gameObject.transform.childCount > 0)
         {
-            // show disabled sprite
-            this.GetComponent<Animator>().SetTrigger("spawned");
-            // spawn the powerup
-            powerupAnimator.SetTrigger("spawned");
-        }
-    }
+            // spawn powerup
+            powerupAnimator = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
+            switch (powerup.type)
+            {
+                case PowerupType.Coin:
+                    powerupAnimator.SetTrigger("coinTrigger");
+                    break;
+                case PowerupType.MagicMushroom:
+                    powerupAnimator.SetTrigger("magicTrigger");
+                    break;
+                case PowerupType.OneUpMushroom:
+                    powerupAnimator.SetTrigger("oneupTrigger");
+                    break;
+                case PowerupType.StarMan:
+                    powerupAnimator.SetTrigger("starTrigger");
+                    break;
+                default:
+                    Debug.Log("something's wrong i can feel it");
+                    break;
 
-    // used by animator
+            }
+        }
+
+        // disable trigger
+        gameObject.GetComponent<EdgeCollider2D>().enabled = false;
+
+    }
     public void Disable()
     {
-        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        transform.localPosition = new Vector3(0, 0, 0);
+        StopQuestionAnimation();
     }
-
-
-
+    public void StopQuestionAnimation()
+    {
+        questionAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = disabledBlock;
+        questionAnimator.enabled = false;
+    }
 }

@@ -43,4 +43,7 @@ public class GameConstants : ScriptableObject
     // Goomba's movement
     float goombaPatrolTime = 2.0f;
     float goombaMaxOffset = 5.0f;
+
+    // Default Score Increment
+    public int scoreUnit = 1;
 }
