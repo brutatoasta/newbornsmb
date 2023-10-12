@@ -37,8 +37,12 @@ public class MainMenuManager : MonoBehaviour
     {
         letsRoll.PlayOneShot(letsRoll.clip);
         yield return new WaitUntil(() => !letsRoll.isPlaying);
-        Debug.Log("Load world_1-1");
-        SceneManager.LoadSceneAsync("world_1-1", LoadSceneMode.Single);
+
+        SceneManager.LoadSceneAsync(
+            GameConstants.sceneNames[
+                (int)GameConstants.ArrayIndex.loading_screen
+                ],
+            LoadSceneMode.Single);
     }
 
 }

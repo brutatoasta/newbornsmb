@@ -2202,6 +2202,9 @@ MonoBehaviour:
   gamePlay:
     m_PersistentCalls:
       m_Calls: []
+  resetHighscore:
+    m_PersistentCalls:
+      m_Calls: []
   scoreChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2213,6 +2216,7 @@ MonoBehaviour:
       m_Calls: []
   gameScore: {fileID: 11400000, guid: 448da98a8b4b4524791f34a6817b7b3b, type: 2}
   isPaused: 0
+  currentScene: 0
 --- !u!4 &1527159286
 Transform:
   m_ObjectHideFlags: 0

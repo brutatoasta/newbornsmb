@@ -1045,7 +1045,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.220487
+  orthographic size: 9.205396
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1070,7 +1070,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 1.5, z: -10}
+  m_LocalPosition: {x: -19, y: 1.515, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2181,8 +2181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f9b5acb22259a44a22a0f59fe25656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: world_1-2
-  mainMenuName: 
+  nextSceneIndex: 3
 --- !u!4 &1041866213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3756260477105976944, guid: 0c12a069de1ef984b85f853652e82124, type: 3}
@@ -3837,6 +3836,9 @@ MonoBehaviour:
   gamePlay:
     m_PersistentCalls:
       m_Calls: []
+  resetHighscore:
+    m_PersistentCalls:
+      m_Calls: []
   scoreChange:
     m_PersistentCalls:
       m_Calls: []
@@ -3847,6 +3849,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gameScore: {fileID: 11400000, guid: 448da98a8b4b4524791f34a6817b7b3b, type: 2}
+  isPaused: 0
+  currentScene: 0
+  nextScene: 0
 --- !u!4 &2077207360
 Transform:
   m_ObjectHideFlags: 0

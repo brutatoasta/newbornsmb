@@ -16,9 +16,13 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent marioDeath;
     public IntVariable gameScore;
     public bool isPaused = false;
+
+    public int currentScene;
+    public int nextScene;
     void Start()
     {
-        Debug.Log("setvalue0");
+        currentScene = (int)GameConstants.ArrayIndex.main_menu;
+        nextScene = (int)GameConstants.ArrayIndex.world_1_1;
         gameScore.SetValue(0);
         gameStart.Invoke();
         Time.timeScale = 1.0f;

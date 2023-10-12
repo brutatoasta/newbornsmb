@@ -11,7 +11,28 @@ public class GameConstants : ScriptableObject
     public float maxSpeed = 5;
     public float upSpeed = 30;
     public float deathImpulse = 10;
-    Vector3 marioStartingPosition;
+    public static Vector3[] marioStartingPositions = {
+        new Vector3(-10.03f, -5.4f, 0.0f), //main menu
+        Vector3.zero, //loading screen
+        new Vector3(-19.0f, 1.5f, 0.0f), // world 1-1
+        
+        new Vector3(-19.0f, 1.5f, 0.0f), // world 1-2
+
+    };
+    public static string[] sceneNames = {
+        "MainMenu",
+        "LoadingScreen",
+        "world_1-1",
+        "world_1-2",
+    };
+
+    public enum ArrayIndex
+    {
+        main_menu = 0,
+        loading_screen = 1,
+        world_1_1 = 2,
+        world_1_2 = 3
+    }
 
     // Goomba's movement
     float goombaPatrolTime = 2.0f;

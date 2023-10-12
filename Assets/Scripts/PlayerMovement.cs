@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         // other instructions
         // subscribe to Game Restart event
         GameManager.instance.gameRestart.AddListener(GameRestart);
-            }
+    }
 
 
     // Update is called once per frame
@@ -213,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
     public void GameRestart()
     {
         // reset position
-        marioBody.transform.position = new Vector3(-19.0f, 1.5f, 0.0f);
+        marioBody.transform.position = GameConstants.marioStartingPositions[GameManager.instance.currentScene];
         marioBody.velocity = new Vector2(0, 0);
         // reset sprite direction
         faceRightState = true;
