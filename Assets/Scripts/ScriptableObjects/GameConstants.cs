@@ -25,6 +25,12 @@ public class GameConstants : ScriptableObject
         "world_1-1",
         "world_1-2",
     };
+    public static string[] sceneDisplayNames = {
+        "MainMenu",
+        "LoadingScreen",
+        "WORLD 1-1",
+        "WORLD 1-2",
+    };
 
     public enum ArrayIndex
     {

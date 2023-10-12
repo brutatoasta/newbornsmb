@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
     // Start is called before the first frame update
+    public TextMeshProUGUI nextLevelName;
     private bool loadNext;
     void Start()
     {
         loadNext = true;
+        // change loading screen text
+        nextLevelName.text = GameConstants.sceneDisplayNames[GameManager.instance.nextScene];
+        // start timer to load next scene
         StartCoroutine(
             WaitThenLoadScene(
                 GameConstants.sceneNames[
