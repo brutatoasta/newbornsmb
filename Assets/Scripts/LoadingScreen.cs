@@ -30,6 +30,7 @@ public class LoadingScreen : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (loadNext)
         {
+            GameManager.instance.currentScene = GameManager.instance.nextScene;
             SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Single);
         }
 

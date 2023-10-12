@@ -16,7 +16,7 @@ public class GameConstants : ScriptableObject
         Vector3.zero, //loading screen
         new Vector3(-19.0f, 1.5f, 0.0f), // world 1-1
         
-        new Vector3(-19.0f, 1.5f, 0.0f), // world 1-2
+        new Vector3(2.91f, 1.5f, 0.0f), // world 1-2
 
     };
     public static string[] sceneNames = {
