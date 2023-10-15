@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BrickController : MonoBehaviour
+public class BrickController : BaseBlockController
 {
-    public Animator brickAnimator;
-    public Animator coinAnimator;
-
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        // self is question, other is mario
-        Debug.Log("Hit brick");
+        base.OnTriggerEnter2D(other);
+        // TODO: check if supermario
+        bool isSuper = other.gameObject.GetComponent<PlayerMovement>().isSuper;
+        if (isSuper)
+        {
+            BreakBlock();
+        }
 
-        brickAnimator.SetTrigger("jumpTrigger");
-        coinAnimator.SetTrigger("jumpTrigger");
     }
-
-    public void StopAnimation()
+    public void BreakBlock()
     {
-        brickAnimator.enabled = false;
-        brickAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
     }
 }

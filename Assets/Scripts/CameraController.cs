@@ -19,16 +19,17 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         // get coordinate of the bottomleft of the viewport
         // z doesn't matter since the camera is orthographic
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        viewportHalfWidth = Mathf.Abs(bottomLeft.x - this.transform.position.x);
-        viewportHalfHeight = Mathf.Abs(bottomLeft.y - this.transform.position.y);
-        offsetX = 0;//this.transform.position.x - player.position.x;
-        startX = this.transform.position.x;
+        viewportHalfWidth = Mathf.Abs(bottomLeft.x - transform.position.x);
+        viewportHalfHeight = Mathf.Abs(bottomLeft.y - transform.position.y);
+        offsetX = 0;//transform.position.x - player.position.x;
+        startX = transform.position.x;
         endX = endLimit.transform.position.x - viewportHalfWidth;
-        offsetY = 0;//this.transform.position.y - player.position.y;
-        startY = this.transform.position.y;
+        offsetY = 0;//transform.position.y - player.position.y;
+        startY = transform.position.y;
         endY = endLimit.transform.position.y - viewportHalfHeight;
 
     }
@@ -41,9 +42,13 @@ public class CameraController : MonoBehaviour
         if (!(desiredX > startX && desiredX < endX))
             desiredX = transform.position.x;
         // check if desiredY is within startY and endY
-        if (true) //(!(desiredY > startY && desiredY < endY))
+        if (!(desiredY > startY && desiredY < endY))
             desiredY = transform.position.y;
 
-        this.transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);
+        transform.position = new Vector3(desiredX, desiredY, transform.position.z);
+    }
+    public void GameRestart()
+    {
+        transform.position = new Vector3(-7.569899f, 4.774807f, -10);
     }
 }

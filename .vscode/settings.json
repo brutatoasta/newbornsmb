@@ -60,5 +60,6 @@
     "omnisharp.projectLoadTimeout": 60,
     "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current",
     "omnisharp.useModernNet": true,
-    "dotnet.defaultSolution": "newbornsmb.sln"
+    "dotnet.defaultSolution": "newbornsmb.sln",
+    "todo-tree.tree.scanMode": "workspace"
 }
