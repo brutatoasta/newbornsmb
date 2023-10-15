@@ -3,74 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BrickController : MonoBehaviour, IPowerupController
+public class BrickController : BaseBlockController
 {
-    public Animator brickAnimator;
-    Animator powerupAnimator;
-    public Sprite disabledBrick;
-    public BasePowerup powerup;
-    public GameObject powerupPrefab;
-    void Awake()
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        // other instructions
-        GameManager.instance.gameRestart.AddListener(GameRestart);
-    }
-
-    public void GameRestart()
-    {
-        // reset own animation
-        brickAnimator.Play("brick-idle");
-        // reset child
-        if (gameObject.transform.childCount > 0)
-        {
-            Instantiate(powerupPrefab, Vector3.zero, Quaternion.identity);
-            transform.SetParent(powerupPrefab.transform);
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // self is question, other is mario
-        Debug.Log("Hit brick");
-
-        brickAnimator.SetTrigger("jumpTrigger");
-        // if there is a powerup
-        if (gameObject.transform.childCount > 0)
-        {
-            // spawn powerup
-            powerupAnimator = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
-            switch (powerup.type)
-            {
-                case PowerupType.Coin:
-                    powerupAnimator.SetTrigger("coinTrigger");
-                    break;
-                case PowerupType.MagicMushroom:
-                    powerupAnimator.SetTrigger("magicTrigger");
-                    break;
-                case PowerupType.OneUpMushroom:
-                    powerupAnimator.SetTrigger("oneupTrigger");
-                    break;
-                case PowerupType.StarMan:
-                    powerupAnimator.SetTrigger("starTrigger");
-                    break;
-                default:
-                    Debug.Log("something's wrong i can feel it");
-                    break;
-
-            }
-        }
+        base.OnTriggerEnter2D(other);
         // TODO: check if supermario
-        bool isSuper = false;
+        bool isSuper = other.gameObject.GetComponent<PlayerMovement>().isSuper;
         if (isSuper)
         {
-            Disable();
+            BreakBlock();
         }
-        // disable trigger
-        gameObject.GetComponent<EdgeCollider2D>().enabled = false;
 
     }
-    public void Disable()
+    public void BreakBlock()
     {
-        // if supermario, change sprite to disabled brick
-        gameObject.GetComponent<SpriteRenderer>().sprite = disabledBrick;
+
     }
 }

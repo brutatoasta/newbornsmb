@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;
+    public bool isSuper = false;
     // Collision
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
