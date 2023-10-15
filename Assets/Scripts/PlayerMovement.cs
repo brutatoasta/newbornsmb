@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private bool faceRightState = true;
 
     // Animation
-    public Animator marioAnimator;
+    Animator marioAnimator;
 
     // Audio
     public AudioSource marioAudio;
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         // other instructions
         // subscribe to Game Restart event
         GameManager.instance.gameRestart.AddListener(GameRestart);
+        marioAnimator = GetComponent<Animator>();
     }
 
 
@@ -167,9 +168,10 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Death
-        if (other.gameObject.CompareTag("Enemies") && alive)
+        if (other.gameObject.CompareTag("Enemies") && alive && other.gameObject.GetComponent<EnemyMovement>().alive)
         {
             Debug.Log("Collided with goomba!");
+            Die();
         }
 
     }
@@ -184,7 +186,6 @@ public class PlayerMovement : MonoBehaviour
 
             alive = false;
             marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-            GameManager.instance.GameOver();
             StartCoroutine(PlayDeathImpulseThenStop());
 
         }

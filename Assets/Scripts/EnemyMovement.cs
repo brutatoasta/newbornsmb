@@ -11,12 +11,13 @@ public class EnemyMovement : MonoBehaviour
     private int moveRight = -1;
     private Vector2 velocity;
     public Vector3 startPosition;
-    public Animator enemyAnimator;
+    Animator enemyAnimator;
     private Rigidbody2D enemyBody;
     public PlayerMovement playerMovement;
     public bool alive;
     void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
@@ -60,8 +61,8 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Die()
     {
-        enemyAnimator.SetTrigger("dieTrigger");
         alive = false;
+        enemyAnimator.SetTrigger("dieTrigger");
         GameManager.instance.IncreaseScore(1);
     }
     public void DieCallback()
