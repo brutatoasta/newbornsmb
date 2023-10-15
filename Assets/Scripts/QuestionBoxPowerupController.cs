@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
 {
-    public Animator questionAnimator;
+    Animator questionAnimator;
     Animator powerupAnimator;
     public Sprite disabledBlock;
-    public BasePowerup powerup;
+    public GameObject powerupPrefab;
+    void Awake()
+    {
+        // other instructions
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+        questionAnimator = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         questionAnimator.SetTrigger("dieTrigger");
         // if there is a powerup
-        if (gameObject.transform.childCount > 0)
+        if (transform.childCount > 0)
         {
             // spawn powerup
-            powerupAnimator = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
-            switch (powerup.type)
+            powerupAnimator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+            switch (transform.GetChild(0).gameObject.GetComponent<BasePowerup>().type)
             {
                 case PowerupType.Coin:
                     powerupAnimator.SetTrigger("coinTrigger");
@@ -39,7 +45,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
         }
 
         // disable trigger
-        gameObject.GetComponent<EdgeCollider2D>().enabled = false;
+        GetComponent<EdgeCollider2D>().enabled = false;
 
     }
     public void Disable()
@@ -48,7 +54,24 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     }
     public void StopQuestionAnimation()
     {
-        questionAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = disabledBlock;
+        GetComponent<SpriteRenderer>().sprite = disabledBlock;
         questionAnimator.enabled = false;
+    }
+    public void GameRestart()
+    {
+        // reset own animation
+        Debug.Log("QBPC restart");
+        questionAnimator.enabled = true;
+        questionAnimator.Play("question-flash");
+        // reset child
+        if (gameObject.transform.childCount == 0)
+        {
+            SpawnPowerup();
+        }
+    }
+    public void SpawnPowerup()
+    {
+        var child = Instantiate(powerupPrefab, Vector3.zero, Quaternion.identity);
+        child.transform.SetParent(transform);
     }
 }

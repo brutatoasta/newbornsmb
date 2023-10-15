@@ -29,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;
-    public HUDManager hudManager;
-
     // Collision
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
@@ -185,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
 
             alive = false;
             marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-            hudManager.GameOver();
+            GameManager.instance.GameOver();
             StartCoroutine(PlayDeathImpulseThenStop());
 
         }

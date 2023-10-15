@@ -9,6 +9,24 @@ public class BrickController : MonoBehaviour, IPowerupController
     Animator powerupAnimator;
     public Sprite disabledBrick;
     public BasePowerup powerup;
+    public GameObject powerupPrefab;
+    void Awake()
+    {
+        // other instructions
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
+
+    public void GameRestart()
+    {
+        // reset own animation
+        brickAnimator.Play("brick-idle");
+        // reset child
+        if (gameObject.transform.childCount > 0)
+        {
+            Instantiate(powerupPrefab, Vector3.zero, Quaternion.identity);
+            transform.SetParent(powerupPrefab.transform);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         // self is question, other is mario

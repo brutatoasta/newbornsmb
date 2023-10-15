@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class PlayerCombat : Singleton<PlayerCombat>
+public class PlayerCombat : MonoBehaviour
 {
     public EnemyMovement enemyMovement;
     public PlayerMovement playerMovement;
