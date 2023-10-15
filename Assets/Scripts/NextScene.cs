@@ -21,10 +21,4 @@ public class NextScene : MonoBehaviour
                 LoadSceneMode.Single);
         }
     }
-    // public void MainMenu()
-    // {
-    //     Debug.Log("Load Main Menu");
-    //     SceneManager.LoadSceneAsync(mainMenuName, LoadSceneMode.Single);
-
-    // }
 }

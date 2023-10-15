@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class HUDManager : MonoBehaviour
 {
-    private Vector3[] scoreTextPosition = {
+    private readonly Vector3[] scoreTextPosition = {
         new(0, 0, 0),
         new(0, 0, 0)
         };
-    private Vector3[] restartButtonPosition = {
+    private readonly Vector3[] restartButtonPosition = {
         new(0, 0, 0),
         new(0, 0, 0)
     };
@@ -21,12 +22,8 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public CanvasRenderer image;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
+    // Unity Events
+    public UnityEvent gameRestart;
 
     void Awake()
     {
@@ -40,13 +37,13 @@ public class HUDManager : MonoBehaviour
 
         // other instructions
         // subscribe to events
-        GameManager.instance.gameStart.AddListener(GameStart);
-        GameManager.instance.gameOver.AddListener(GameOver);
-        GameManager.instance.gameRestart.AddListener(GameStart);
+        // GameManager.instance.gameStart.AddListener(GameStart);
+        // GameManager.instance.gameOver.AddListener(GameOver);
+        // GameManager.instance.gameRestart.AddListener(GameStart);
         GameManager.instance.scoreChange.AddListener(SetScore);
 
-        GameManager.instance.gamePause.AddListener(GamePause);
-        GameManager.instance.gamePlay.AddListener(GamePlay);
+        // GameManager.instance.gamePause.AddListener(GamePause);
+        // GameManager.instance.gamePlay.AddListener(GamePlay);
 
     }
     // Update is called once per frame
@@ -66,6 +63,7 @@ public class HUDManager : MonoBehaviour
     public void GameStart()
     {
         // hide gameover panel
+        pauseText.enabled = false;
         image.SetAlpha(0.0f);
         gameOverText.enabled = false;
         scoreText.transform.localPosition = scoreTextPosition[0];

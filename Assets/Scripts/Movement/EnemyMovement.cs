@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class EnemyMovement : MonoBehaviour
     private int moveRight = -1;
     private Vector2 velocity;
     public Vector3 startPosition;
-    public Animator enemyAnimator;
+    Animator enemyAnimator;
     private Rigidbody2D enemyBody;
     public PlayerMovement playerMovement;
     public bool alive;
+    public UnityEvent increaseScore;
+    public UnityEvent damagePlayer;
     void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
@@ -52,17 +56,19 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        // damage player, we let mario decides if he dies or if hes supermario he gets downgraded
         if (other.gameObject.CompareTag("Player") && alive)
         {
-            GameManager.instance.MarioDeath();
+            damagePlayer.Invoke();
         }
     }
     public void Die()
     {
-        enemyAnimator.SetTrigger("dieTrigger");
         alive = false;
-        GameManager.instance.IncreaseScore(1);
+        enemyAnimator.SetTrigger("dieTrigger");
+        
+        // GameManager.instance.IncreaseScore(1);
+        increaseScore.Invoke();
     }
     public void DieCallback()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public GameConstants gameConstants;
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool faceRightState = true;
 
     // Animation
-    public Animator marioAnimator;
+    Animator marioAnimator;
 
     // Audio
     public AudioSource marioAudio;
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     private bool moving = false;
     private bool jumpedState = false;
     public bool isSuper = false;
+
+    public UnityEvent gameOver;
+
     // Collision
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
@@ -62,9 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        // other instructions
-        // subscribe to Game Restart event
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        marioAnimator = GetComponent<Animator>();
     }
 
 
@@ -167,9 +169,10 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Death
-        if (other.gameObject.CompareTag("Enemies") && alive)
+        if (other.gameObject.CompareTag("Enemies") && alive && other.gameObject.GetComponent<EnemyMovement>().alive)
         {
             Debug.Log("Collided with goomba!");
+            Die();
         }
 
     }
@@ -184,7 +187,6 @@ public class PlayerMovement : MonoBehaviour
 
             alive = false;
             marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-            GameManager.instance.GameOver();
             StartCoroutine(PlayDeathImpulseThenStop());
 
         }
@@ -196,18 +198,12 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayDeathImpulse();
         yield return new WaitForSeconds(1);
-        GameManager.instance.GameOver();
+        // GameManager.instance.GameOver();
+        gameOver.Invoke();
 
 
     }
-    public void RestartButtonCallback(int input)
-    {
-        Debug.Log("Restart!");
-        // reset everything
-        GameRestart();
-        // resume time
-        Time.timeScale = 1.0f;
-    }
+
 
     public void GameRestart()
     {
