@@ -5,7 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPowerupApplicable
+
 {
     public GameConstants gameConstants;
     float speed;
@@ -230,6 +231,30 @@ public class PlayerMovement : MonoBehaviour
         {
             // change the position accordingly in your World-1-2 case
             this.transform.position = new Vector3(-19f, 1.5f, 0.0f);
+        }
+    }
+
+    public void RequestPowerupEffect(IPowerup i)
+    {
+        switch (i.powerupType)
+        {
+            case PowerupType.Coin:
+                // no op, since it affect manager
+                break;
+            case PowerupType.MagicMushroom:
+                // no op, since it affect manager
+                break;
+            case PowerupType.OneUpMushroom:
+                // no op, since it affect manager
+                break;
+            case PowerupType.StarMan:
+                // make mario invincible
+                break;
+            // what about fire mario
+            default:
+                Debug.Log("something's wrong i can feel it");
+                break;
+
         }
     }
 }

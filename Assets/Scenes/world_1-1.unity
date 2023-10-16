@@ -3065,13 +3065,14 @@ GameObject:
   - component: {fileID: 1922906964}
   - component: {fileID: 1922906963}
   - component: {fileID: 1922906966}
-  - component: {fileID: 1922906965}
   - component: {fileID: 1922906967}
   - component: {fileID: 1922906970}
   - component: {fileID: 1922906972}
   - component: {fileID: 1922906969}
   - component: {fileID: 1922906971}
+  - component: {fileID: 1922906965}
   - component: {fileID: 1922906973}
+  - component: {fileID: 1922906974}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -3555,6 +3556,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: GameRestart
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1922906974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922906962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c586ba8a3f70ec941b2ca8e33eb77bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 90aad48f6dafe8f469af27df637bf57e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1922906965}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
+        m_MethodName: BroadcastMessage
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
